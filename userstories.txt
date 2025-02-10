@@ -1,0 +1,22 @@
+1. As a player, I want to be able to connect to a League of Legends account
+2. As a player, I want to be able to create a new lobby
+3. As a player, I want to be able to join a lobby by id
+4. As a player, I want to be able to select teams, randomize teams, or select subteams and randomize the rest of the players
+4. As a player, I want to be able to start the game
+5. As a player, I want to receive a random champion
+6. As a player, I want to be able to re-roll a champion
+7. As a player, I want to be able to change champion with a teamate
+8. As a player, I want my teams champions to be hidden to the enemy team 
+9. As a player, I want to be able to switch champions with another player on my team
+10. As a player, I want to be able to lock in my champion
+11. As a player, I want the teams and all selected champions to be shown when the champ-select is done
+
+
+Thoughts
+4. Keep track of two collections(teams), aswell a collection of players to select a random team for
+Use singnalR (dotnet) and Socket.IO (react) to create a websocket server-client protocol to update gamestate in realtime
+
+
+Extensions:
+12. As a player, I want to join tournaments (overview over matchups, who has won)
+    Is it possible to create a bot that can set up custom games and keep track of winners and loosers?

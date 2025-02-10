@@ -1,0 +1,6 @@
+@MeleeAram.webapi_HostAddress = http://localhost:5261
+
+GET {{MeleeAram.webapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
