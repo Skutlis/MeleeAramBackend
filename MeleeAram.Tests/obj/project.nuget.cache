@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JycESKWsvTU=",
+  "dgSpecHash": "xGjRY53Fjl0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\backend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
+  "projectFilePath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Skutlis\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\Skutlis\\.nuget\\packages\\microsoft.codecoverage\\17.11.1\\microsoft.codecoverage.17.11.1.nupkg.sha512",

@@ -811,11 +811,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\backend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
       "projectName": "MeleeAram.Tests",
-      "projectPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\backend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
+      "projectPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
       "packagesPath": "C:\\Users\\Skutlis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\backend\\MeleeAram.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
