@@ -3,19 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeleeAram.webapi.Entities;
 
-public class Champion : IMaEntities
+public class OwnedChamps : IMaEntities
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
-    public string Name { get; set; }
-    public string Attack { get; set; }
-    public string[] Tag { get; set; }
+    public int ChampionId { get; set; }
+    public int PlayerId { get; set; }
     [NotMapped]
-    public IEnumerable<BannedChampion> BannedChampions { get; set; }
+    public Champion Champion { get; set; }
     [NotMapped]
-    public IEnumerable<OwnedChamps> OwnedChamps { get; set; }
-
+    public Player Player { get; set; }
     public void Update(IMaEntities entity)
     {
         throw new NotImplementedException();

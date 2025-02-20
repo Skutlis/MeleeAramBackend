@@ -9,6 +9,7 @@ public class Player : IMaEntities
     public DateTime UpdatedAt { get; set; }
     public string GamerTag { get; set; }
     public string Puuid { get; set; }
+    public IEnumerable<OwnedChamps> OwnedChamps { get; set; }
 
 
     public void Update(IMaEntities entity)
