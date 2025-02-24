@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MeleeAram.webapi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5672427087d2516716052b8db2ebfc81d8fdf7dc")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeleeAram.webapi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeleeAram.webapi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

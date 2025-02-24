@@ -1,6 +1,8 @@
-﻿namespace MeleeAram.Tests;
+using NUnit.Framework;
 
-public class Tests
+namespace MeleeAram.Tests;
+
+public class APITest
 {
     [SetUp]
     public void Setup()
