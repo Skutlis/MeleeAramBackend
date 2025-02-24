@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using MeleeAram.webapi.DataContext;
 using MeleeAram.webapi.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -71,10 +72,13 @@ public class MaRepository<T> : IMaRepository<T> where T : class, IMaEntities
         }
     }
 
-    public bool Exists(Func<T, bool> exist)
+    public bool Exists(Expression<Func<T, bool>> exist)
     {
         return _table.Any(exist);
     }
 
-
+    public async Task<T> GetEntityByColumnValue(Expression<Func<T, bool>> boolFunc)
+    {
+        return await _table.FirstOrDefaultAsync(boolFunc);
+    }
 }

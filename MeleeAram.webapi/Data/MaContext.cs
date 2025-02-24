@@ -16,12 +16,13 @@ public class MaContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseNpgsql(_connectionString);
-        optionsBuilder.UseLazyLoadingProxies();
+        optionsBuilder.UseNpgsql(_connectionString); // Connect to Neon DB
+        optionsBuilder.UseLazyLoadingProxies(); // Enable lazyloading 
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        // Assign primary keys
         modelBuilder.Entity<GameMode>()
             .HasKey(gm => gm.Id);
 
@@ -37,6 +38,7 @@ public class MaContext : DbContext
         modelBuilder.Entity<Player>()
             .HasKey(p => p.Id);
 
+        // Assign relationships
         modelBuilder.Entity<GameMode>()
             .HasMany(gm => gm.BannedChampions)
             .WithOne(bc => bc.GameMode);
@@ -68,7 +70,6 @@ public class MaContext : DbContext
         modelBuilder.Entity<OwnedChamps>()
             .HasOne(oc => oc.Player)
             .WithMany(p => p.OwnedChamps);
-
 
     }
 }
