@@ -1,6 +1,7 @@
 using System;
 
-namespace MeleeAram.webapi.Utility.ExternalAPI;
+namespace MeleeAram.webapi.ExternalAPI.ResponseObjects;
+
 
 public class ChampionMastery
 {

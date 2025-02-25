@@ -1,4 +1,7 @@
-﻿using MeleeAram.webapi.Utility.ExternalAPI;
+﻿using MeleeAram.webapi.ExternalAPI;
+using MeleeAram.webapi.ExternalAPI.ResponseObjects;
+using MeleeAram.webapi.Utility;
+
 using Microsoft.Extensions.Configuration;
 
 namespace MeleeAram.Tests;
@@ -16,14 +19,20 @@ public class LeagueAPITest
         _api = new LeagueApi();
     }
     [Test()]
-    public async Task TestGetChampionMasteriesReturnsListOfChampMasteryObject()
+    public async Task TestGetChampionMasteriesIsNotEmptyt()
     {
-        List<ChampionMastery> masteries = await _api.GetChampionMasteries(_testPuuid);
-
-        Assert.That(masteries.Count() > 0);
-
-
+        Payload<List<ChampionMastery>> result = await _api.GetChampionMasteries(_testPuuid);
+        if (result.success)
+        {
+            Assert.That(result.Data.Count() > 0);
+        }
+        else
+        {
+            Assert.Fail();
+        }
 
 
     }
+
+
 }
