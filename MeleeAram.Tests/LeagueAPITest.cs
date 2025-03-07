@@ -18,7 +18,7 @@ public class LeagueAPITest
         _testPuuid = configuration.GetValue<string>("TESTPUUID")!;
         _api = new LeagueApi();
     }
-    [Test()]
+    [Test]
     public async Task TestGetChampionMasteriesIsNotEmptyt()
     {
         Payload<List<ChampionMastery>> result = await _api.GetChampionMasteries(_testPuuid);
@@ -30,9 +30,31 @@ public class LeagueAPITest
         {
             Assert.Fail();
         }
+    }
 
+    [Test]
+    public async Task TestGetLatestDDragonVersionReturnsGoodResponse()
+    {
+        Payload<string> result = await _api.GetLatestDdragonApiVersion();
+
+        Assert.That(result.success && result.Data.Length > 0);
+    }
+
+    [Test]
+    public async Task TestGetDDragonChampionData()
+    {
+        Payload<DDragonChampionResponse> result = await _api.GetDDragonChampionData();
+        if (result.success)
+        {
+            Assert.That(result.Data.ChampionData.Keys.Count() > 0);
+        }
+        else
+        {
+            Assert.Fail(result.Data.ToString());
+        }
 
     }
+
 
 
 }
