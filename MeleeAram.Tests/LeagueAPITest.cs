@@ -46,13 +46,29 @@ public class LeagueAPITest
         Payload<DDragonChampionResponse> result = await _api.GetDDragonChampionData();
         if (result.success)
         {
-            Assert.That(result.Data.ChampionData.Keys.Count() > 0);
+            Assert.That(result.Data.ChampionData.Keys.Count() > 0, result.Data.ChampionData.ToString());
+
         }
         else
         {
             Assert.Fail(result.Data.ToString());
         }
 
+    }
+
+    [Test]
+    public async Task TestGetPuuidReturnsPuuid()
+    {
+        Payload<string> result = await _api.GetPuuidBySummonerName("Gankèren", "GANKS");
+
+        if (result.success)
+        {
+            Assert.That(result.Data.Length > 0);
+        }
+        else
+        {
+            Assert.Fail();
+        }
     }
 
 

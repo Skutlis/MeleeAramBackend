@@ -10,6 +10,7 @@ public class Champion : IMaEntities
     public DateTime UpdatedAt { get; set; }
     public string Name { get; set; }
     public string Attack { get; set; }
+    public string Image { get; set; }
     public string[] Tag { get; set; }
     [NotMapped]
     public IEnumerable<BannedChampion> BannedChampions { get; set; }

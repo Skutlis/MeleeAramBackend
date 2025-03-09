@@ -42,10 +42,31 @@ public class LeagueApi
         return new Payload<List<ChampionMastery>>() { success = false, StatusMessage = $"Unsuccessful request: {response.StatusCode}" }; // Unsuccessful request
     }
 
+    public async Task<Payload<string>> GetPuuidBySummonerName(string summonerName, string tag)
+    {
+        string url = RIOT_SUMMONER_API + $"/{summonerName}" + $"/{tag}" + $"?api_key={RIOT_API_KEY}";
+        Uri reqUri = new Uri(url);
+        HttpResponseMessage response = await client.GetAsync(reqUri);
+        if (response.IsSuccessStatusCode)
+        {
+            PuuidResponse puuidObject = await response.Content.ReadFromJsonAsync<PuuidResponse>() ?? new PuuidResponse();
+            if (puuidObject != null)
+            {
+                return new Payload<string>() { Data = puuidObject.puuid }; // Success
+            }
+
+            return new Payload<string>() { success = false, StatusMessage = $"Unsuccessful request: {response.StatusCode}" }; // Success, but no data retrieved
+        }
+
+        return new Payload<string>() { success = false, StatusMessage = $"Unsuccessful request: {response.StatusCode}" }; // Unsuccessful request
+
+    }
+
     public async Task<Payload<string>> GetLatestDdragonApiVersion()
     {
         string url = DDRAGON_VERSION_API_BASE + "/api/versions.json";
-        HttpResponseMessage response = await client.GetAsync(url);
+        Uri reqUri = new Uri(url);
+        HttpResponseMessage response = await client.GetAsync(reqUri);
         if (response.IsSuccessStatusCode)
         {
             List<string> apiVersions = await response.Content.ReadFromJsonAsync<List<string>>() ?? new List<string>();
@@ -70,8 +91,8 @@ public class LeagueApi
         string latestDDragonVersion = requestLatestDDragonVersion.Data;
 
         string url = "https://ddragon.leagueoflegends.com/cdn/" + latestDDragonVersion + "/data/en_US/champion.json";
-
-        HttpResponseMessage response = await client.GetAsync(url);
+        Uri reqUri = new Uri(url);
+        HttpResponseMessage response = await client.GetAsync(reqUri);
         if (response.IsSuccessStatusCode)
         {
             DDragonChampionResponse championInfo = await response.Content.ReadFromJsonAsync<DDragonChampionResponse>() ?? new DDragonChampionResponse();
@@ -85,10 +106,5 @@ public class LeagueApi
         return new Payload<DDragonChampionResponse>() { success = false, StatusMessage = $"Could not retrieve champion data: {response.StatusCode}" };
     }
 
-    public async Task<Payload<Dictionary<string, int>>> GetChampionToIdMap()
-    {
-        string url = RIOT_SUMMONER_API + $"?api_key={RIOT_API_KEY}";
-        return new Payload<Dictionary<string, int>>();
-    }
 }
 
