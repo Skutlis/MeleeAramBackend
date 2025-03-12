@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace MeleeAram.webapi.Repository;
 
-public interface IMaRepository<T>
+public interface IAgRepository<T>
 {
     Task<IEnumerable<T>> GetAll();
 

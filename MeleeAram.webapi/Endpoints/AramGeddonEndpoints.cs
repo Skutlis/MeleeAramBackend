@@ -6,21 +6,26 @@ using MeleeAram.webapi.Entities;
 using MeleeAram.webapi.Repository;
 using MeleeAram.webapi.Utility;
 using Microsoft.AspNetCore.Mvc;
+using AramGeddon.webapi.Services;
 
 namespace MeleeAram.webapi.Endpoints;
 
 public static class MA_endpoint
 {
 
+
     public static void ConfigureMaEndpoint(this WebApplication app)
     {
-        var MA = app.MapGroup("/aram");
+        var AG = app.MapGroup("/");
+
+
+
 
     }
 
     #region Player endpoints
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public static async Task<IResult> Connect(MaRepository<Player> maRepository, IMapper mapper, string gamertag)
+    public static async Task<IResult> Connect(AgRepository<Player> maRepository, IMapper mapper, string gamertag)
     {
 
         Expression<Func<Player, bool>> findPlayerExpr = p => p.GamerTag == gamertag;
@@ -35,7 +40,10 @@ public static class MA_endpoint
 
     #endregion
 
+
     #region Champion endpoints
+
+
 
     #endregion
 

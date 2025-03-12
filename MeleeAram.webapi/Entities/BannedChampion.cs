@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeleeAram.webapi.Entities;
 
-public class BannedChampion : IMaEntities
+public class BannedChampion : IAgEntities
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -12,12 +12,12 @@ public class BannedChampion : IMaEntities
     public int ChampionId { get; set; }
     public int GameModeId { get; set; }
     [NotMapped]
-    public GameMode GameMode { get; set; }
+    public virtual BanList GameMode { get; set; }
     [NotMapped]
-    public Champion Champion { get; set; }
+    public virtual Champion Champion { get; set; }
 
 
-    public void Update(IMaEntities entity)
+    public void Update(IAgEntities entity)
     {
         throw new NotImplementedException();
     }

@@ -2,16 +2,16 @@ using System;
 using MeleeAram.webapi.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeleeAram.webapi.DataContext;
+namespace MeleeAram.webapi.Data;
 
-public class MaContext : DbContext
+public class AramGeddonContext : DbContext
 {
     private string _connectionString;
-    public MaContext(DbContextOptions<MaContext> options) : base(options)
+    public AramGeddonContext(DbContextOptions<AramGeddonContext> options) : base(options)
     {
         var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
         _connectionString = configuration.GetValue<string>("ConnectionStrings:DefaultConnectionString")!;
-        this.Database.EnsureCreated();
+        //this.Database.EnsureCreated();
 
     }
 
@@ -24,7 +24,7 @@ public class MaContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         // Assign primary keys
-        modelBuilder.Entity<GameMode>()
+        modelBuilder.Entity<BanList>()
             .HasKey(gm => gm.Id);
 
         modelBuilder.Entity<BannedChampion>()
@@ -40,9 +40,17 @@ public class MaContext : DbContext
             .HasKey(p => p.Id);
 
         // Assign relationships
-        modelBuilder.Entity<GameMode>()
+        modelBuilder.Entity<BanList>()
             .HasMany(gm => gm.BannedChampions)
             .WithOne(bc => bc.GameMode);
+
+        modelBuilder.Entity<BanList>()
+            .HasOne(b => b.Player)
+            .WithMany(p => p.BanLists);
+
+        modelBuilder.Entity<Player>()
+            .HasMany(p => p.BanLists)
+            .WithOne(b => b.Player);
 
         modelBuilder.Entity<BannedChampion>()
             .HasOne(bc => bc.GameMode)

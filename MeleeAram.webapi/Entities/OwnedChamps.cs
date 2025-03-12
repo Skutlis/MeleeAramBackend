@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeleeAram.webapi.Entities;
 
-public class OwnedChamps : IMaEntities
+public class OwnedChamps : IAgEntities
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -11,10 +11,10 @@ public class OwnedChamps : IMaEntities
     public int ChampionId { get; set; }
     public int PlayerId { get; set; }
     [NotMapped]
-    public Champion Champion { get; set; }
+    public virtual Champion Champion { get; set; }
     [NotMapped]
-    public Player Player { get; set; }
-    public void Update(IMaEntities entity)
+    public virtual Player Player { get; set; }
+    public void Update(IAgEntities entity)
     {
         throw new NotImplementedException();
     }

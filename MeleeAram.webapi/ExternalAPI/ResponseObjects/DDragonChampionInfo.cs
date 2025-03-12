@@ -26,7 +26,7 @@ public class ChampionData
     public string Version { get; set; }
 
     [JsonPropertyName("id")]
-    public string Id { get; set; }
+    public string DragonId { get; set; }
 
     [JsonPropertyName("key")]
     public string Key { get; set; }
@@ -55,4 +55,6 @@ public class ChampionData
     [JsonPropertyName("stats")]
     public ChampionStats Stats { get; set; }
 }
+
+
 

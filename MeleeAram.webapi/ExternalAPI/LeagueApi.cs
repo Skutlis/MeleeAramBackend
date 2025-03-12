@@ -1,5 +1,6 @@
 using System;
 using System.Net.Http.Headers;
+using AramGeddon.webapi.ExternalAPI.ResponseObjects;
 using MeleeAram.webapi.ExternalAPI.ResponseObjects;
 using MeleeAram.webapi.Utility;
 
@@ -80,12 +81,12 @@ public class LeagueApi
         return new Payload<string>() { success = false, StatusMessage = $"Unsuccessful request: {response.StatusCode}" }; //Unsuccessful request
     }
 
-    public async Task<Payload<DDragonChampionResponse>> GetDDragonChampionData()
+    public async Task<Payload<ChampionApplicationDataColleciton>> GetDDragonChampionData()
     {
         Payload<string> requestLatestDDragonVersion = await GetLatestDdragonApiVersion();
         if (!requestLatestDDragonVersion.success)
         {
-            return new Payload<DDragonChampionResponse> { success = false, StatusMessage = $"Error at latestDDragonVersionRequest: {requestLatestDDragonVersion.StatusMessage}" };
+            return new Payload<ChampionApplicationDataColleciton> { success = false, StatusMessage = $"Error at latestDDragonVersionRequest: {requestLatestDDragonVersion.StatusMessage}" };
         }
 
         string latestDDragonVersion = requestLatestDDragonVersion.Data;
@@ -99,11 +100,11 @@ public class LeagueApi
             Console.WriteLine(championInfo);
             if (championInfo.ChampionData.Keys.Count() > 0)
             {
-                return new Payload<DDragonChampionResponse>() { Data = championInfo }; //Success
+                return new Payload<ChampionApplicationDataColleciton>() { Data = new ChampionApplicationDataColleciton(championInfo.ChampionData) }; //Success
             }
-            return new Payload<DDragonChampionResponse>() { Data = championInfo, success = false, StatusMessage = "Successful request but no data was retrieved" }; //Success, but no data retrieved
+            return new Payload<ChampionApplicationDataColleciton>() { success = false, StatusMessage = "Successful request but no data was retrieved" }; //Success, but no data retrieved
         }
-        return new Payload<DDragonChampionResponse>() { success = false, StatusMessage = $"Could not retrieve champion data: {response.StatusCode}" };
+        return new Payload<ChampionApplicationDataColleciton>() { success = false, StatusMessage = $"Could not retrieve champion data: {response.StatusCode}" };
     }
 
 }

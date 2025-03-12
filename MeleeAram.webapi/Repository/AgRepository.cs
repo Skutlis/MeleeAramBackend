@@ -1,17 +1,17 @@
 using System;
 using System.Linq.Expressions;
-using MeleeAram.webapi.DataContext;
+using MeleeAram.webapi.Data;
 using MeleeAram.webapi.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeleeAram.webapi.Repository;
 
-public class MaRepository<T> : IMaRepository<T> where T : class, IMaEntities
+public class AgRepository<T> : IAgRepository<T> where T : class, IAgEntities
 {
-    private MaContext _db;
+    private AramGeddonContext _db;
     private DbSet<T> _table;
 
-    public MaRepository(MaContext context)
+    public AgRepository(AramGeddonContext context)
     {
         _db = context;
         _table = _db.Set<T>();
@@ -20,8 +20,15 @@ public class MaRepository<T> : IMaRepository<T> where T : class, IMaEntities
 
     public async Task<T> CreateEntity(T entity)
     {
+        if (_table.Count() == 0)
+        {
+            entity.Id = 1;
+        }
+        else
+        {
+            entity.Id = _table.Max(e => e.Id) + 1;
+        }
 
-        entity.Id = _table.Max(e => e.Id) + 1;
         entity.CreatedAt = DateTime.Now.ToUniversalTime();
         entity.UpdatedAt = DateTime.Now.ToUniversalTime();
         await _table.AddAsync(entity);

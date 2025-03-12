@@ -3,7 +3,7 @@ using System;
 namespace MeleeAram.webapi.ExternalAPI.ResponseObjects;
 
 
-public class Champion
+public class RiotChampion
 {
     public string Id { get; set; }
     public string Key { get; set; }
