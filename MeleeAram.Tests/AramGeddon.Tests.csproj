@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MeleeAram.webapi\MeleeAram.webapi.csproj" />
+    <ProjectReference Include="..\MeleeAram.webapi\AramGeddon.webapi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

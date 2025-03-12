@@ -925,7 +925,7 @@
           }
         }
       },
-      "MeleeAram.webapi/1.0.0": {
+      "AramGeddon.webapi/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
@@ -938,10 +938,10 @@
           "Swashbuckle.AspNetCore": "7.2.0"
         },
         "compile": {
-          "bin/placeholder/MeleeAram.webapi.dll": {}
+          "bin/placeholder/AramGeddon.webapi.dll": {}
         },
         "runtime": {
-          "bin/placeholder/MeleeAram.webapi.dll": {}
+          "bin/placeholder/AramGeddon.webapi.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -2376,15 +2376,15 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "MeleeAram.webapi/1.0.0": {
+    "AramGeddon.webapi/1.0.0": {
       "type": "project",
-      "path": "../MeleeAram.webapi/MeleeAram.webapi.csproj",
-      "msbuildProject": "../MeleeAram.webapi/MeleeAram.webapi.csproj"
+      "path": "../MeleeAram.webapi/AramGeddon.webapi.csproj",
+      "msbuildProject": "../MeleeAram.webapi/AramGeddon.webapi.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "MeleeAram.webapi >= 1.0.0",
+      "AramGeddon.webapi >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 17.11.1",
       "NUnit >= 4.2.2",
       "NUnit.Analyzers >= 4.3.0",
@@ -2399,9 +2399,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
-      "projectName": "MeleeAram.Tests",
-      "projectPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\MeleeAram.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\AramGeddon.Tests.csproj",
+      "projectName": "AramGeddon.Tests",
+      "projectPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\AramGeddon.Tests.csproj",
       "packagesPath": "C:\\Users\\Skutlis\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.Tests\\obj\\",
       "projectStyle": "PackageReference",
@@ -2424,8 +2424,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.webapi\\MeleeAram.webapi.csproj": {
-              "projectPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.webapi\\MeleeAram.webapi.csproj"
+            "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.webapi\\AramGeddon.webapi.csproj": {
+              "projectPath": "C:\\Users\\Skutlis\\webapps\\MeleeAram\\MeleeAramBackend\\MeleeAram.webapi\\AramGeddon.webapi.csproj"
             }
           }
         }
