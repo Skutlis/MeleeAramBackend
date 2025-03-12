@@ -1,2 +1,9 @@
 
 MeleeAram.webapi/appsettings.json
+MeleeAram.webapi/Migrations
+MeleeAram.webapi/obj
+MeleeAram.webapi/bin
+MeleeAram.webapi/Properties
+MeleeAram.Tests/obj
+MeleeAram.Tests/bin
+MeleeAram.Tests/Properties
