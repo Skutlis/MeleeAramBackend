@@ -24,19 +24,7 @@ public static class MA_endpoint
     }
 
     #region Player endpoints
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public static async Task<IResult> Connect(AgRepository<Player> maRepository, IMapper mapper, string gamertag)
-    {
 
-        Expression<Func<Player, bool>> findPlayerExpr = p => p.GamerTag == gamertag;
-
-        if (maRepository.Exists(findPlayerExpr))
-        {
-            Player match = await maRepository.GetEntityByColumnValue(findPlayerExpr);
-            return TypedResults.Ok(new Payload<GetPlayerDTO>() { Data = mapper.Map<GetPlayerDTO>(match) });
-        }
-        return TypedResults.Ok();
-    }
 
     #endregion
 

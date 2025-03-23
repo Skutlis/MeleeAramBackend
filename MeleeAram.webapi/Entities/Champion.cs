@@ -16,7 +16,7 @@ public class Champion : IAgEntities
     [NotMapped]
     public virtual IEnumerable<BannedChampion> BannedChampions { get; set; }
     [NotMapped]
-    public virtual IEnumerable<OwnedChamps> OwnedChamps { get; set; }
+    public virtual IEnumerable<OwnedChamp> OwnedChamps { get; set; }
 
     public void Update(IAgEntities entity)
     {

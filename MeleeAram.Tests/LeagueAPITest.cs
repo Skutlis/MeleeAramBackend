@@ -1,4 +1,5 @@
-﻿using MeleeAram.webapi.ExternalAPI;
+﻿using AramGeddon.webapi.ExternalAPI.ResponseObjects;
+using MeleeAram.webapi.ExternalAPI;
 using MeleeAram.webapi.ExternalAPI.ResponseObjects;
 using MeleeAram.webapi.Utility;
 
@@ -43,7 +44,7 @@ public class LeagueAPITest
     [Test]
     public async Task TestGetDDragonChampionData()
     {
-        Payload<DDragonChampionResponse> result = await _api.GetDDragonChampionData();
+        Payload<ChampionApplicationDataColleciton> result = await _api.GetDDragonChampionData();
         if (result.success)
         {
             Assert.That(result.Data.ChampionData.Keys.Count() > 0, result.Data.ChampionData.ToString());

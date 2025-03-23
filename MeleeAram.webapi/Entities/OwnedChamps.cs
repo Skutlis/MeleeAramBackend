@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeleeAram.webapi.Entities;
 
-public class OwnedChamps : IAgEntities
+public class OwnedChamp : IAgEntities
 {
     public int Id { get; set; }
     public DateTime CreatedAt { get; set; }

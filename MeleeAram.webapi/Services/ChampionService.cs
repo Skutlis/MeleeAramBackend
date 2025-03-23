@@ -1,4 +1,6 @@
 using System;
+using AramGeddon.webapi.DTOs;
+using AramGeddon.webapi.ExternalAPI;
 using AramGeddon.webapi.ExternalAPI.ResponseObjects;
 using AutoMapper;
 using MeleeAram.webapi.Entities;
@@ -10,7 +12,6 @@ namespace AramGeddon.webapi.Services;
 
 public class ChampionService
 {
-    private LeagueApi _leagueApi = new LeagueApi();
     private List<string> _meeles = new List<string>();
     private void loadMelees()
     {
@@ -31,11 +32,11 @@ public class ChampionService
         }
     }
 
-    public async Task<Payload<List<Champion>>> GetChampionsData(IMapper mapper)
+    public async Task<Payload<List<Champion>>> GetChampionsData(ILeagueApi leagueApi, IMapper mapper)
     {
         if (_meeles.Count == 0) loadMelees();
 
-        Payload<ChampionApplicationDataColleciton> response = await _leagueApi.GetDDragonChampionData();
+        Payload<ChampionApplicationDataColleciton> response = await leagueApi.GetDDragonChampionData();
         if (!response.success) return new Payload<List<Champion>>() { success = false, StatusMessage = response.StatusMessage };
         List<Champion> champions = new List<Champion>();
 
@@ -49,10 +50,23 @@ public class ChampionService
             }
 
             champions.Add(current);
-
         }
+
 
         return new Payload<List<Champion>>() { Data = champions };
     }
+
+    public async Task<Payload<List<ChampionMasteryDTO>>> GetChampionMasteries(ILeagueApi leagueApi, IMapper mapper, string puuid)
+    {
+        Payload<List<ChampionMastery>> response = await leagueApi.GetChampionMasteries(puuid);
+
+        if (!response.success) return new Payload<List<ChampionMasteryDTO>>() { success = false, StatusMessage = response.StatusMessage };
+
+        List<ChampionMasteryDTO> result = mapper.Map<List<ChampionMasteryDTO>>(response.Data);
+
+        return new Payload<List<ChampionMasteryDTO>>() { Data = result };
+    }
+
+
 
 }

@@ -84,8 +84,13 @@ public class AgRepository<T> : IAgRepository<T> where T : class, IAgEntities
         return _table.Any(exist);
     }
 
-    public async Task<T> GetEntityByColumnValue(Expression<Func<T, bool>> boolFunc)
+    public async Task<T> GetEntityByExpr(Expression<Func<T, bool>> boolFunc)
     {
         return await _table.FirstOrDefaultAsync(boolFunc);
+    }
+
+    public async Task<IEnumerable<T>> GetEntitiesByExpr(Expression<Func<T, bool>> boolFunc)
+    {
+        return _table.Where(boolFunc).ToList();
     }
 }

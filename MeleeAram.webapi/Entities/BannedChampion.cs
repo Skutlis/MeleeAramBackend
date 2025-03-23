@@ -10,7 +10,7 @@ public class BannedChampion : IAgEntities
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public int ChampionId { get; set; }
-    public int GameModeId { get; set; }
+    public int BanListId { get; set; }
     [NotMapped]
     public virtual BanList GameMode { get; set; }
     [NotMapped]

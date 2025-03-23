@@ -33,7 +33,7 @@ public class AramGeddonContext : DbContext
         modelBuilder.Entity<Champion>()
             .HasKey(c => c.Id);
 
-        modelBuilder.Entity<OwnedChamps>()
+        modelBuilder.Entity<OwnedChamp>()
             .HasKey(oc => oc.Id);
 
         modelBuilder.Entity<Player>()
@@ -68,15 +68,16 @@ public class AramGeddonContext : DbContext
             .HasMany(c => c.OwnedChamps)
             .WithOne(oc => oc.Champion);
 
-        modelBuilder.Entity<OwnedChamps>()
+        modelBuilder.Entity<OwnedChamp>()
             .HasOne(oc => oc.Champion)
-            .WithMany(c => c.OwnedChamps);
+            .WithMany(c => c.OwnedChamps)
+            .HasForeignKey(oc => oc.ChampionId);
 
         modelBuilder.Entity<Player>()
             .HasMany(p => p.OwnedChamps)
             .WithOne(oc => oc.Player);
 
-        modelBuilder.Entity<OwnedChamps>()
+        modelBuilder.Entity<OwnedChamp>()
             .HasOne(oc => oc.Player)
             .WithMany(p => p.OwnedChamps);
 

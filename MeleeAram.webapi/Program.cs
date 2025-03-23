@@ -1,8 +1,10 @@
 
 
 using AramGeddon.webapi.Endpoints;
+using AramGeddon.webapi.ExternalAPI;
 using MeleeAram.webapi.Data;
 using MeleeAram.webapi.Entities;
+using MeleeAram.webapi.ExternalAPI;
 using MeleeAram.webapi.Repository;
 
 
@@ -15,7 +17,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AramGeddonContext>();
+// Add dependecies to inject
+builder.Services.AddScoped<ILeagueApi, LeagueApi>();
 builder.Services.AddScoped<IAgRepository<Champion>, AgRepository<Champion>>();
+builder.Services.AddScoped<IAgRepository<Player>, AgRepository<Player>>();
+builder.Services.AddScoped<IAgRepository<OwnedChamp>, AgRepository<OwnedChamp>>();
 
 
 builder.Services.AddAutoMapper(typeof(Program));
@@ -32,7 +38,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 // Configure endpoints
 app.ConfigureChampionEndpoints();
-
+app.ConfigurePlayerEndpoints();
 
 
 app.Run();

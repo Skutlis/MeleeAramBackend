@@ -8,7 +8,8 @@ public interface IAgRepository<T>
     Task<IEnumerable<T>> GetAll();
 
     Task<T> GetEntityById(int id);
-    Task<T> GetEntityByColumnValue(Expression<Func<T, bool>> boolFunc);
+    Task<T> GetEntityByExpr(Expression<Func<T, bool>> boolFunc);
+    Task<IEnumerable<T>> GetEntitiesByExpr(Expression<Func<T, bool>> boolFunc);
     Task<T> UpdateEntityById(int id, T entity);
     Task<T> CreateEntity(T entity);
     Task<T> DeleteEntityById(int id);
